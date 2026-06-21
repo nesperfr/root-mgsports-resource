@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>满冠体育 · 日常翻阅与延伸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2f3a;
+            line-height: 1.7;
+            padding: 1.5rem;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .page-card {
+            background-color: #ffffff;
+            border-radius: 36px 12px 36px 12px;
+            box-shadow: 0 8px 28px rgba(0, 70, 80, 0.06), 0 2px 8px rgba(20, 110, 120, 0.04);
+            padding: 2.2rem 1.8rem;
+            margin-top: 0.8rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            border-left: 6px solid #2b9b9b;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #124f5a;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #3d6f78;
+            margin-bottom: 2rem;
+            padding-left: 1.8rem;
+            border-bottom: 1px dashed #b7d6da;
+            padding-bottom: 0.7rem;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 2.2rem 0;
+        }
+
+        @media (min-width: 520px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            .page-card {
+                padding: 2.8rem 2.4rem;
+            }
+        }
+
+        .card {
+            background: #f1f9f9;
+            border-radius: 24px 8px 24px 8px;
+            padding: 1.5rem 1.2rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 10px rgba(30, 90, 95, 0.04);
+        }
+
+        .card:hover {
+            background: #e4f3f2;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(28, 108, 108, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0b565e;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #1f3f47;
+        }
+
+        .card .emoji-badge {
+            display: inline-block;
+            background: #c4e0e0;
+            color: #09626b;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.1rem 0.9rem;
+            border-radius: 50px;
+            margin-top: 0.8rem;
+        }
+
+        .quote-block {
+            background: #d9edee;
+            border-radius: 20px 6px 20px 6px;
+            padding: 1.4rem 1.6rem;
+            margin: 2.2rem 0 2rem 0;
+            font-style: normal;
+            color: #14555b;
+            border-left: 4px solid #1d8c8c;
+        }
+
+        .quote-block p {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .quote-block cite {
+            font-size: 0.9rem;
+            font-style: normal;
+            color: #2b6f74;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .access-sentence {
+            background: #ffffff;
+            border: 1px solid #c3dbdd;
+            border-radius: 40px 12px 40px 12px;
+            padding: 1.2rem 1.8rem;
+            font-size: 1.05rem;
+            margin: 2.2rem 0 0.6rem 0;
+            text-align: center;
+            color: #124f5a;
+            box-shadow: 0 2px 6px rgba(30, 105, 105, 0.04);
+        }
+
+        .access-sentence a {
+            color: #0b6b6b;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid #63b3b3;
+            padding-bottom: 2px;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .access-sentence a:hover {
+            color: #033b3b;
+            border-bottom-color: #0b4e4e;
+        }
+
+        .faq-mini {
+            margin: 2.4rem 0 0.8rem 0;
+        }
+
+        details {
+            background: #f5fcfb;
+            border-radius: 40px 8px 40px 8px;
+            padding: 0.8rem 1.4rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #cfe6e7;
+            transition: background 0.2s;
+        }
+
+        details[open] {
+            background: #eef9f8;
+            padding-bottom: 1.2rem;
+        }
+
+        summary {
+            font-weight: 500;
+            color: #07555e;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        summary::before {
+            content: "▹";
+            color: #2a9494;
+            font-size: 1.2rem;
+        }
+
+        details[open] summary::before {
+            content: "▿";
+        }
+
+        details p {
+            margin-top: 0.7rem;
+            color: #1e474e;
+            padding-left: 0.2rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6f9299;
+            margin-top: 2.5rem;
+            border-top: 1px solid #d3e4e5;
+            padding-top: 1.5rem;
+        }
+
+        .pill-tag {
+            display: inline-block;
+            background: #b6d7d9;
+            color: #09464e;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.9rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.6rem;
+                padding-left: 0.8rem;
+            }
+            .page-card {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-card">
+        <h1>日常翻阅 · 满冠体育</h1>
+        <div class="subhead">从一次查询开始，到对照与延伸</div>
+
+        <p style="margin-bottom: 1.6rem; font-size: 1.05rem;">
+            常常有这样的时刻：想了解某个体育项目的基础信息，或者想比对不同赛事的背景资料。这时候，一个清晰、安静的信息来源就变得很重要。 
+            <span class="pill-tag">对照</span>
+            <span class="pill-tag">延伸</span>
+        </p>
+
+        <!-- 多段正文 -->
+        <p style="margin-bottom: 1.2rem;">
+            <strong>检索的起点。</strong> 每当需要核实赛事规则、运动员履历，或者仅仅是阅读一段关于运动训练的简述，打开一个结构分明的页面总会让思路更顺。 
+            类似翻阅一本轻巧的手册，不必在冗余信息里绕路。最近几次，我习惯在浏览器标签页里保留一个固定的站点，方便随手查证。
+        </p>
+
+        <p style="margin-bottom: 1.4rem;">
+            <strong>对照的乐趣。</strong> 体育世界里充满了数据与细节：同一项目在不同赛季的规则微调，不同训练体系背后的理念差异。 
+            如果有一处地方能把相近条目并排放置，让眼睛在行与行之间游走，那种“原来如此”的体验就特别自然。 
+            不需要花哨的动效，只要排版干净、色彩温和，就足以支撑起一段专注的阅读。
+        </p>
+
+        <!-- 网格卡片 -->
+        <div class="grid-cards">
+            <div class="card">
+                <h3>📋 信息对照</h3>
+                <p>赛事术语、装备规格、基本战术——并列呈现，方便快速比照。适合赛前课后随手翻看。</p>
+                <span class="emoji-badge">延伸阅读</span>
+            </div>
+            <div class="card">
+                <h3>📎 延伸笔记</h3>
+                <p>从一条简短数据出发，引出背景说明或相关项目介绍。不堆砌，点到即止。</p>
+                <span class="emoji-badge">脉络梳理</span>
+            </div>
+        </div>
+
+        <!-- 引用提示 -->
+        <div class="quote-block">
+            <p>“体育知识常常藏在零散的段落里。一个安静的页面就像一位耐心的向导，不催促，只铺陈。” </p>
+            <cite>—— 来自某次日常浏览的随笔</cite>
+        </div>
+
+        <!-- 更多正文段落 -->
+        <p style="margin-bottom: 1.2rem;">
+            <strong>延伸的边界。</strong> 某一项运动的历史节点，或者训练方法的演变，常常在不经意间把阅读引向更宽的领域。 
+            这时候，如果页面里的链接能自然地接住这种好奇心，就再好不过了。它不需要喊你“去这里”，而是像句子的一部分，让人顺着读下去。
+        </p>
+
+        <p style="margin-bottom: 1.8rem;">
+            举个例子，当一段文字提到“近年来的训练理念变化”，旁边若有一个指向相关站点或文章的词，读者可以自行决定是否深入。 
+            对我来说，这种克制的连接方式，反而更愿意多停留一会儿。
+        </p>
+
+        <!-- 自然嵌入链接的访问句 -->
+        <div class="access-sentence">
+            如果你也习惯在日常搜索与对照中梳理体育信息，不妨在书签栏里收留 
+            <a href="https://root-mgsports.com">满冠体育</a>。
+        </div>
+
+        <!-- FAQ 摘要 (mini) -->
+        <div class="faq-mini">
+            <details>
+                <summary>这个页面适合哪些阅读场景？</summary>
+                <p>临赛前的快速查询，训练后的理论对照，或者单纯想找一段平实的体育短文。没有弹窗，没有倒计时。</p>
+            </details>
+            <details>
+                <summary>内容偏向哪个运动领域？</summary>
+                <p>覆盖多种常见项目，侧重基础信息、发展脉络与实用细节。不追求独家内幕，更看重可读与可靠。</p>
+            </details>
+            <details>
+                <summary>移动端浏览体验如何？</summary>
+                <p>卡片与网格针对小屏做了适配，文字大小与间距优先照顾阅读舒适性。横竖屏皆可。</p>
+            </details>
+        </div>
+
+        <div class="footer-note">
+            <span>满冠体育 · 日常翻阅 &nbsp;|&nbsp; 源于查询，归于对照</span>
+        </div>
+    </div>
+</body>
+</html>
