@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Serif SC', 'Times New Roman', serif;
+            background-color: #f9f6f0;
+            color: #2e2b28;
+            line-height: 1.7;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #fefcf8;
+            border-radius: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(100, 80, 60, 0.03);
+            padding: 2.8rem 2rem;
+        }
+        @media (max-width: 560px) {
+            body {
+                padding: 1rem 0.8rem 2.4rem;
+            }
+            .container {
+                padding: 2rem 1.2rem;
+                border-radius: 20px;
+            }
+        }
+
+        /* 标题区 */
+        .hero {
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #eae3d8;
+            padding-bottom: 1.8rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 450;
+            letter-spacing: -0.02em;
+            color: #3d352e;
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+        .hero h1 small {
+            font-size: 1.1rem;
+            font-weight: 350;
+            color: #8a7e72;
+            letter-spacing: 0.3px;
+            margin-left: 0.2rem;
+        }
+        .hero .tagline {
+            font-style: italic;
+            font-size: 1rem;
+            color: #7a6e62;
+            margin-top: 0.6rem;
+            border-left: 3px solid #d6cdbf;
+            padding-left: 1rem;
+        }
+
+        /* 摘要卡片 */
+        .intro-box {
+            background: #f4efe8;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin-bottom: 2.4rem;
+            border: 1px solid #e4dbcf;
+        }
+        .intro-box p {
+            font-size: 1.05rem;
+        }
+        .intro-box .highlight {
+            background: #e9e0d4;
+            border-radius: 6px;
+            padding: 0.1rem 0.4rem;
+            color: #3f352d;
+        }
+
+        /* 特点区块 — 卡片群 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin: 2.4rem 0 2.8rem;
+        }
+        @media (max-width: 540px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+            }
+        }
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #ece4d8;
+            border-radius: 24px;
+            padding: 1.6rem 1.4rem;
+            transition: box-shadow 0.2s ease;
+        }
+        .feature-card:hover {
+            box-shadow: 0 6px 14px rgba(80, 60, 40, 0.06);
+        }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #4c4037;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .feature-card h3::before {
+            content: "▹";
+            color: #b3a492;
+            font-size: 1.2rem;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #55504a;
+            margin-bottom: 0.2rem;
+        }
+
+        /* 引用块 / 提示框 */
+        .callout {
+            background: #efe9e0;
+            border-left: 5px solid #b5a696;
+            padding: 1.4rem 1.8rem;
+            border-radius: 16px;
+            margin: 2rem 0 2.2rem;
+        }
+        .callout p {
+            font-size: 0.98rem;
+            color: #3e3832;
+            margin-bottom: 0.4rem;
+        }
+        .callout strong {
+            color: #4a3f35;
+        }
+        .callout .muted {
+            color: #71655a;
+            font-size: 0.9rem;
+        }
+
+        /* 使用建议 — 列表 */
+        .usage-list {
+            background: #f7f2ea;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0;
+        }
+        .usage-list h4 {
+            font-weight: 450;
+            font-size: 1.1rem;
+            color: #4d4036;
+            margin-bottom: 0.8rem;
+        }
+        .usage-list ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+        .usage-list li {
+            padding: 0.3rem 0 0.3rem 1.6rem;
+            position: relative;
+            color: #4d443c;
+        }
+        .usage-list li::before {
+            content: "•";
+            color: #ab9a88;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+        }
+
+        /* FAQ摘要 */
+        .faq-note {
+            border-top: 1px solid #e2d9cc;
+            padding-top: 1.6rem;
+            margin-top: 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            justify-content: space-between;
+        }
+        .faq-item {
+            flex: 1 1 200px;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #4b3f35;
+            font-size: 0.95rem;
+        }
+        .faq-item .a {
+            font-size: 0.88rem;
+            color: #6b6056;
+            margin-top: 0.2rem;
+        }
+
+        /* 链接嵌入 */
+        .inline-link {
+            color: #7f6a57;
+            text-decoration: none;
+            border-bottom: 1px solid #cfc1b2;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .inline-link:hover {
+            color: #4d3d30;
+            border-bottom-color: #7f6a57;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #90847a;
+            border-top: 1px solid #e8dfd2;
+            padding-top: 1.6rem;
+            text-align: center;
+        }
+        .footer-note a {
+            color: #7f6a57;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbbcb0;
+        }
+        .footer-note a:hover {
+            border-bottom-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero -->
+        <div class="hero">
+            <h1>
+                爱游戏
+                <small>以产品的方式理解</small>
+            </h1>
+            <div class="tagline">温和信息 · 适度参与 · 日常陪伴</div>
+        </div>
+
+        <!-- 摘要 -->
+        <div class="intro-box">
+            <p>
+                在信息与娱乐边界逐渐模糊的时期，<span class="highlight">爱游戏</span>尝试提供一种平实、稳定的线上内容空间。
+                它不追求感官刺激或短暂热潮，而是围绕「可理解的休闲」这一线索，将互动与资讯自然地编织在一起。
+                作为一个长期存在的产品页面，它的重心落在日常可用、内容清晰以及节奏克制上。
+            </p>
+        </div>
+
+        <!-- 亮点 卡片 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>结构轻简</h3>
+                <p>信息层级经过梳理，减少无关跳转与过度推送。每个功能模块都保留明确的目的说明，不制造认知负担。</p>
+            </div>
+            <div class="feature-card">
+                <h3>内容节奏</h3>
+                <p>更新以周为粒度，不追求即时刷新。关注持久话题与基础玩法，而非短期热点。适合慢慢阅读与理解。</p>
+            </div>
+            <div class="feature-card">
+                <h3>视觉中性</h3>
+                <p>界面以低对比度、暖色基底为主，无弹窗、无闪烁动效。字体与间距优先照顾长时间浏览的舒适感。</p>
+            </div>
+            <div class="feature-card">
+                <h3>多端适应</h3>
+                <p>从宽屏到小尺寸设备，布局自动调整。文字流保持连贯，不隐藏关键信息，不依赖复杂手势操作。</p>
+            </div>
+        </div>
+
+        <!-- 引用 / 提示 -->
+        <div class="callout">
+            <p><strong>一点说明</strong>：<a href="https://sportchina-igame.com" class="inline-link">爱游戏</a> 是面向常规网络环境的页面，不包含用户注册、数据采集或外部追踪。所有内容均为静态呈现，旨在提供一种可信任的浏览氛围。若你希望体验更完整的互动功能，可自行了解其平台特性，但本页仅做产品概念展示。</p>
+            <p class="muted">—— 灵感来自「简单工具，长久使用」这个朴素想法。</p>
+        </div>
+
+        <!-- 使用建议 -->
+        <div class="usage-list">
+            <h4>适合在哪些场景下打开？</h4>
+            <ul>
+                <li>午后或晚间，希望有一段不被打扰的浏览时间，而非不停刷新。</li>
+                <li>对信息深度有一定要求，愿意阅读完整段落而非碎片标题。</li>
+                <li>想了解某项主题的基础脉络，但不急于立刻行动或消费。</li>
+                <li>保持设备低亮度或开启阅读模式时，页面依旧可辨。</li>
+            </ul>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-note">
+            <div class="faq-item">
+                <div class="q">内容是否经常更新？</div>
+                <div class="a">更新周期较慢，以稳定为主。不会出现每日推送或通知。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">是否需要下载或注册？</div>
+                <div class="a">不需要。<a href="https://sportchina-igame.com" class="inline-link">爱游戏</a> 纯信息展示，不涉及账户体系。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">能否用于商业参考？</div>
+                <div class="a">建议仅作为个人兴趣或产品设计语感参考，不构成任何承诺。</div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            关于这个页面 — 它是对一个产品概念的温和注解。<br>
+            更多信息请访问 <a href="https://sportchina-igame.com">爱游戏</a>（静态演示页）。
+        </div>
+    </div>
+</body>
+</html>
