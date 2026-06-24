@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏介绍页 · 轻量导航 · 平台用途速览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f6f0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #2d2a24;
+            padding: 0 20px;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 2rem auto;
+            background: #fffcf7;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            padding: 2.2rem 2.6rem 3rem 2.6rem;
+        }
+
+        /* ----- 顶部导航 ----- */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e9e2d8;
+            margin-bottom: 2.2rem;
+        }
+
+        .logo-area {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #4c3f31;
+        }
+
+        .logo-area small {
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: #a39481;
+            margin-left: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6a5c4b;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b7a48b;
+            color: #3f3429;
+        }
+
+        /* ----- hero / 标题区域 ----- */
+        .hero-tag {
+            background: #f2ede4;
+            padding: 1.6rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 2.4rem;
+        }
+
+        .hero-tag h1 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #2a241d;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-tag p {
+            font-size: 1rem;
+            color: #5a4e3e;
+            max-width: 680px;
+        }
+
+        /* ----- 介绍段落 (衔接) ----- */
+        .intro-block {
+            margin-bottom: 2.6rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1rem;
+        }
+
+        .intro-block a {
+            color: #7f6b52;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            font-weight: 500;
+        }
+
+        .intro-block a:hover {
+            color: #3f2f1e;
+        }
+
+        /* 引文 / 提示框 */
+        .insight-box {
+            background: #efe9df;
+            padding: 1.2rem 1.6rem;
+            border-radius: 18px;
+            border-left: 6px solid #b7a48b;
+            margin: 1.6rem 0;
+            font-style: normal;
+            color: #3f362a;
+        }
+
+        .insight-box strong {
+            color: #2f261b;
+        }
+
+        /* ----- 三个场景模块 (卡片风格) ----- */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 2.4rem 0;
+        }
+
+        .scene-card {
+            background: #faf6ef;
+            border-radius: 20px;
+            padding: 1.5rem 1.2rem 1.6rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: transform 0.15s ease;
+            border: 1px solid #e9e2d8;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-4px);
+            border-color: #d6cbbe;
+        }
+
+        .scene-card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #3f3429;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .scene-card p {
+            font-size: 0.92rem;
+            color: #605546;
+            margin-bottom: 0.4rem;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #ddd3c4;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            color: #3f3429;
+            margin-top: 8px;
+        }
+
+        /* ----- 常见说明 (faq 摘要) ----- */
+        .faq-summary {
+            margin: 2.4rem 0 1.4rem 0;
+            border-top: 1px solid #ece5db;
+            padding-top: 2rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #3f3429;
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            padding: 0.6rem 0 0.6rem 1.2rem;
+            border-left: 3px solid #d6cbbe;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #3f3429;
+        }
+
+        .faq-item .a {
+            color: #5f5546;
+            font-size: 0.92rem;
+            margin-top: 4px;
+        }
+
+        /* ----- 底部留白 & 响应式 ----- */
+        .extra-note {
+            margin-top: 2.6rem;
+            padding: 1rem 1.4rem;
+            background: #f4efe6;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            color: #5c4f3d;
+        }
+
+        .extra-note a {
+            color: #7f6b52;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        @media (max-width: 720px) {
+            .page {
+                padding: 1.6rem 1.2rem 2rem 1.2rem;
+                margin: 1rem auto;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+            }
+            .hero-tag h1 {
+                font-size: 1.5rem;
+            }
+            .scenes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .scene-card {
+                padding: 1.2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-tag {
+                padding: 1.2rem 1.2rem;
+            }
+            .faq-item {
+                padding-left: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 顶部导航 -->
+        <nav class="top-nav">
+            <div class="logo-area">
+                🎯 爱游戏 <small>· 轻量导航</small>
+            </div>
+            <div class="nav-links">
+                <a href="#intro">概览</a>
+                <a href="#scenes">场景</a>
+                <a href="#faq">说明</a>
+            </div>
+        </nav>
+
+        <!-- hero / 简明识别 -->
+        <div class="hero-tag">
+            <h1>快速识别平台用途</h1>
+            <p>无论是想了解体育资讯、追逐赛事动态，还是探索综合互动内容，<strong>爱游戏</strong> 提供了一条清晰的内容路径。下文从三个高频使用场景切入，帮助新用户快速建立认知。</p>
+        </div>
+
+        <!-- 核心介绍段落，自然嵌入链接 -->
+        <div class="intro-block" id="intro">
+            <p>
+                许多用户初次接触 <a href="https://sport-zh-igame.com">爱游戏</a> 时，会先确认其内容属性。该平台以体育类信息为轴心，同时延伸出多元的休闲内容模块。用户不必在多个网站之间切换，而是可以在同一界面下完成信息浏览、赛事追踪和轻互动体验。下文概括了三个典型的使用场景，每个场景都对应不同的信息需求。
+            </p>
+
+            <div class="insight-box">
+                <strong>📌 使用提示：</strong> 如果你只是偶尔关注体育新闻或赛事结果，<a href="https://sport-zh-igame.com">爱游戏</a> 的首页聚合模块可以节省大量筛选时间。日常查看比分、赛程、热门话题均可一站式完成。
+            </div>
+        </div>
+
+        <!-- 三个场景模块 -->
+        <div id="scenes" style="scroll-margin-top: 1.5rem;"></div>
+        <div class="scenes-grid">
+            <div class="scene-card">
+                <h3>🏟️ 赛事速览</h3>
+                <p>覆盖足球、篮球、网球等主流联赛。实时比分、积分榜、赛程预告集中展示，适合赛前快速做功课或赛后回顾关键数据。</p>
+                <span class="tag">数据聚合</span>
+            </div>
+            <div class="scene-card">
+                <h3>📰 资讯动态</h3>
+                <p>球队新闻、转会传闻、赛事前瞻——内容风格偏资讯整合。用户可以在一个信息流里获取多条相关动态，不必逐一搜索来源。</p>
+                <span class="tag">内容聚合</span>
+            </div>
+            <div class="scene-card">
+                <h3>🎮 轻互动区</h3>
+                <p>除体育内容外，平台也保留了一部分休闲互动功能，如趣味预测、积分活动等。适合在观赛间隙或通勤时轻度参与。</p>
+                <span class="tag">休闲延展</span>
+            </div>
+        </div>
+
+        <!-- 常见说明(faq摘要) 附带第二处链接 -->
+        <div class="faq-summary" id="faq">
+            <h2>❓ 常见说明摘要</h2>
+            <div class="faq-item">
+                <div class="q">· 平台主要面向哪类用户？</div>
+                <div class="a">对体育赛事有日常关注需求的用户，以及希望在同一个地方查看多种体育资讯的浏览者。<a href="https://sport-zh-igame.com">爱游戏</a> 的内容组织方式降低了信息收集成本。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">· 是否需要注册才能浏览主要内容？</div>
+                <div class="a">大部分资讯和赛事数据可直接查看，部分互动功能可能需要简单注册。建议先浏览导航栏内容，再根据自身需要决定是否参与互动。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">· 平台内容的更新频率如何？</div>
+                <div class="a">赛事期间更新较为密集，日常也有编辑精选内容。页面数据通常随比赛进程同步刷新，资讯流保持每日更新。</div>
+            </div>
+        </div>
+
+        <!-- 底部提示区，第三次出现链接（自然嵌入） -->
+        <div class="extra-note">
+            ⚡ 如果你希望进一步了解平台的功能布局，可以直接访问 <a href="https://sport-zh-igame.com">爱游戏</a> 首页，从导航和板块标题入手，会更快形成自己的使用路径。本页仅作为用途速览，不构成功能承诺。
+        </div>
+    </div>
+</body>
+</html>
